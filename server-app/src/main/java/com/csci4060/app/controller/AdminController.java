@@ -186,19 +186,19 @@ public class AdminController extends ExceptionResolver {
 
 		}
 		
-		if(!deletedUsers.isEmpty()) {
-			
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emailsToSend = deletedUsers.toArray(new String[deletedUsers.size()]);
-			
-			mailMessage.setTo(emailsToSend);
-			mailMessage.setSubject("User Removed");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("You have been removed from the ulm communication app. " + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if(!deletedUsers.isEmpty()) {
+//			
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emailsToSend = deletedUsers.toArray(new String[deletedUsers.size()]);
+//			
+//			mailMessage.setTo(emailsToSend);
+//			mailMessage.setSubject("User Removed");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("You have been removed from the ulm communication app. " + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "User was successfully deleted.", emails);
 	}

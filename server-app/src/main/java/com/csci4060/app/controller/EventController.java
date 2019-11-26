@@ -133,21 +133,21 @@ public class EventController extends ExceptionResolver {
 			}
 		}
 
-		if (!actualRecipients.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = actualRecipients.toArray(new String[actualRecipients.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Event Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText(
-					"A faculty has set an event for you. Please log in to you ULM communication app and register for the event. "
-							+ "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!actualRecipients.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = actualRecipients.toArray(new String[actualRecipients.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Event Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText(
+//					"A faculty has set an event for you. Please log in to you ULM communication app and register for the event. "
+//							+ "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.CREATED.value(), "Event " + event.getTitle() + " created successfully",
 				event);
@@ -349,34 +349,34 @@ public class EventController extends ExceptionResolver {
 
 		eventService.save(event);
 
-		if (!addedUserEmail.isEmpty()) {
+//		if (!addedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Event Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText(
+//					"A faculty has set an event for you. Please log in to you ULM communication app and register for the event. Thank you!");
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Event Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText(
-					"A faculty has set an event for you. Please log in to you ULM communication app and register for the event. Thank you!");
-			emailSenderService.sendEmail(mailMessage);
-		}
-
-		if (!deletedUserEmail.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Event Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has cancelled an event with name " + event.getTitle()
-					+ " If you have cofirmed the event, we apologize for the inconvenience." + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!deletedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Event Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has cancelled an event with name " + event.getTitle()
+//					+ " If you have cofirmed the event, we apologize for the inconvenience." + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Event has been successfully edited", event);
 	}
@@ -421,21 +421,21 @@ public class EventController extends ExceptionResolver {
 
 		eventService.delete(event);
 
-		if (!recipientsEmailList.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Event Cancelled");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has cancelled an event with name " + event.getTitle()
-					+ " If you have confirmed to attend this event, we apologize for the inconvenience."
-					+ "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!recipientsEmailList.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Event Cancelled");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has cancelled an event with name " + event.getTitle()
+//					+ " If you have confirmed to attend this event, we apologize for the inconvenience."
+//					+ "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Event was successfully deleted.", event);
 	}

@@ -97,20 +97,20 @@ public class CalendarController extends ExceptionResolver {
 
 		calendarService.save(calendar);
 
-		if (!realRecipients.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = realRecipients.toArray(new String[realRecipients.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Calendar Added");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
-					+ " has shared a calendar named " + calendar.getName() + " with you." + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!realRecipients.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = realRecipients.toArray(new String[realRecipients.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Calendar Added");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
+//					+ " has shared a calendar named " + calendar.getName() + " with you." + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.CREATED.value(),
 				"Calendar with name " + calendarName + " has been succesfully created", calendar);
@@ -193,20 +193,20 @@ public class CalendarController extends ExceptionResolver {
 
 		}
 
-		if (!sharedWithList.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = sharedWithList.toArray(new String[sharedWithList.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Calendar Shared");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
-					+ " has shared a calendar named " + calendar.getName() + " wiith you." + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!sharedWithList.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = sharedWithList.toArray(new String[sharedWithList.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Calendar Shared");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
+//					+ " has shared a calendar named " + calendar.getName() + " wiith you." + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(),
 				"Calendar " + calendar.getName() + " has been shared.", calendar);
@@ -297,33 +297,33 @@ public class CalendarController extends ExceptionResolver {
 
 		calendarService.save(calendar);
 
-		if (!addedUserEmail.isEmpty()) {
+//		if (!addedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Calendar Shared");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
+//					+ " has shared a calendar named " + calendar.getName() + " with you." + "Thank you!");
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Calendar Shared");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
-					+ " has shared a calendar named " + calendar.getName() + " with you." + "Thank you!");
-			emailSenderService.sendEmail(mailMessage);
-		}
-
-		if (!deletedUserEmail.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Calendar removed");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("You have been removed from a calendar named " + calendar.getName() + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!deletedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Calendar removed");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("You have been removed from a calendar named " + calendar.getName() + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Calendar has been successfully edited", calendar);
 	}
@@ -368,21 +368,21 @@ public class CalendarController extends ExceptionResolver {
 
 		calendarService.delete(calendar);
 
-		if (!recipientsEmailList.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Calendar deleted");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
-					+ " has deleted a calendar named " + calendar.getName() + " which was shared to you."
-					+ "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!recipientsEmailList.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Calendar deleted");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("This email is to inform you that " + calendar.getCreatedBy().getName()
+//					+ " has deleted a calendar named " + calendar.getName() + " which was shared to you."
+//					+ "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Calendar was successfully deleted.", calendar);
 	}

@@ -109,22 +109,22 @@ public class FileController {
 				}
 			}
 
-			if (!newUsersEmailList.isEmpty()) {
-				SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-				String[] newUsersEmailArray = newUsersEmailList.toArray(new String[newUsersEmailList.size()]);
-
-				mailMessage.setTo(newUsersEmailArray);
-				mailMessage.setSubject("Registration Complete");
-				mailMessage.setFrom("ulmautoemail@gmail.com");
-				mailMessage.setText(
-						"Congratulations! You have been successfully registered to ULM Communication App. Your "
-								+ "username is your warhawks email address and your password is your cwid. Please change your "
-								+ "password as soon as possible to secure your account. Click on the following link to login "
-								+ "to your account.");
-
-				emailSenderService.sendEmail(mailMessage);
-			}
+//			if (!newUsersEmailList.isEmpty()) {
+//				SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//				String[] newUsersEmailArray = newUsersEmailList.toArray(new String[newUsersEmailList.size()]);
+//
+//				mailMessage.setTo(newUsersEmailArray);
+//				mailMessage.setSubject("Registration Complete");
+//				mailMessage.setFrom("ulmautoemail@gmail.com");
+//				mailMessage.setText(
+//						"Congratulations! You have been successfully registered to ULM Communication App. Your "
+//								+ "username is your warhawks email address and your password is your cwid. Please change your "
+//								+ "password as soon as possible to secure your account. Click on the following link to login "
+//								+ "to your account.");
+//
+//				emailSenderService.sendEmail(mailMessage);
+//			}
 
 //			UploadFileResponse response = new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(),
 //					file.getSize());

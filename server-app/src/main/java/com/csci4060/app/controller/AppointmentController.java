@@ -190,21 +190,21 @@ public class AppointmentController extends ExceptionResolver {
 			timeSlotsService.save(slots);
 		}
 
-		if (!recepientsEmailList.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = recepientsEmailList.toArray(new String[recepientsEmailList.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Appointment Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has set an appointment named " + appointment.getName()
-					+ " for you. Please log in to you ULM communication app and register for the appointment. "
-					+ "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!recepientsEmailList.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = recepientsEmailList.toArray(new String[recepientsEmailList.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Appointment Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has set an appointment named " + appointment.getName()
+//					+ " for you. Please log in to you ULM communication app and register for the appointment. "
+//					+ "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.CREATED.value(), "Appointment created successfully", appointment);
 	}
@@ -685,36 +685,36 @@ public class AppointmentController extends ExceptionResolver {
 			eventService.save(event);
 		}
 
-		if (!addedUserEmail.isEmpty()) {
+//		if (!addedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Appointment Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has set an appointment named " + appointment.getName()
+//					+ " for you. Please log in to you ULM communication app and register for the appointment. "
+//					+ "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = addedUserEmail.toArray(new String[addedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Appointment Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has set an appointment named " + appointment.getName()
-					+ " for you. Please log in to you ULM communication app and register for the appointment. "
-					+ "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
-
-		if (!deletedUserEmail.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Appointment Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has cancelled an appointment with name " + appointment.getName()
-					+ " Please disregard the previous email." + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!deletedUserEmail.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = deletedUserEmail.toArray(new String[deletedUserEmail.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Appointment Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has cancelled an appointment with name " + appointment.getName()
+//					+ " Please disregard the previous email." + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Appointment has been successfully edited", appointment);
 	}
@@ -756,20 +756,20 @@ public class AppointmentController extends ExceptionResolver {
 
 		appointmentService.delete(appointment);
 
-		if (!recipientsEmailList.isEmpty()) {
-
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
-
-			mailMessage.setTo(emails);
-			mailMessage.setSubject("Appointment Information");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("A faculty has cancelled an appointment with name " + appointment.getName()
-					+ " Please disregard the previous email." + "Thank you!");
-
-			emailSenderService.sendEmail(mailMessage);
-		}
+//		if (!recipientsEmailList.isEmpty()) {
+//
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//			String[] emails = recipientsEmailList.toArray(new String[recipientsEmailList.size()]);
+//
+//			mailMessage.setTo(emails);
+//			mailMessage.setSubject("Appointment Information");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("A faculty has cancelled an appointment with name " + appointment.getName()
+//					+ " Please disregard the previous email." + "Thank you!");
+//
+//			emailSenderService.sendEmail(mailMessage);
+//		}
 
 		return new APIresponse(HttpStatus.OK.value(), "Appointment was successfully deleted.", appointment);
 	}

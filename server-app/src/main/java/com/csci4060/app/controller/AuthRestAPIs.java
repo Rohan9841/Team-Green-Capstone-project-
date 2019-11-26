@@ -180,16 +180,16 @@ public class AuthRestAPIs extends ExceptionResolver {
 //
 //		confirmationTokenService.save(confirmationToken);
 //
-		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setTo(user.getEmail());
-		mailMessage.setSubject("Complete Registration!");
-		mailMessage.setFrom("ulmautoemail@gmail.com");
-		mailMessage.setText("Congratulations! You have been successfully registered to ULM Communication App. Your "
-				+ "username is your warhawks email address and your password is your cwid. Please change your "
-				+ "password as soon as possible to secure your account. Click on the following link to login "
-				+ "to your account.");
-
-		emailSenderService.sendEmail(mailMessage);
+//		SimpleMailMessage mailMessage = new SimpleMailMessage();
+//		mailMessage.setTo(user.getEmail());
+//		mailMessage.setSubject("Complete Registration!");
+//		mailMessage.setFrom("ulmautoemail@gmail.com");
+//		mailMessage.setText("Congratulations! You have been successfully registered to ULM Communication App. Your "
+//				+ "username is your warhawks email address and your password is your cwid. Please change your "
+//				+ "password as soon as possible to secure your account. Click on the following link to login "
+//				+ "to your account.");
+//
+//		emailSenderService.sendEmail(mailMessage);
 
 		return new APIresponse(HttpStatus.OK.value(), "User has been registered successfully.", user.getEmail());
 	}
@@ -232,14 +232,14 @@ public class AuthRestAPIs extends ExceptionResolver {
 
 			String appUrl = request.getScheme() + "://" + request.getServerName();
 
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(user.getEmail());
-			mailMessage.setSubject("Verify Email");
-			mailMessage.setFrom("ulmautoemail@gmail.com");
-			mailMessage.setText("Here is the link to reset your password:\n" + appUrl + ":8181/api/auth/"
-					+ confirmationTokenService.findByUser(user).getConfirmationToken());
-
-			emailSenderService.sendEmail(mailMessage);
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//			mailMessage.setTo(user.getEmail());
+//			mailMessage.setSubject("Verify Email");
+//			mailMessage.setFrom("ulmautoemail@gmail.com");
+//			mailMessage.setText("Here is the link to reset your password:\n" + appUrl + ":8181/api/auth/"
+//					+ confirmationTokenService.findByUser(user).getConfirmationToken());
+//
+//			emailSenderService.sendEmail(mailMessage);
 
 			// Add success message to view
 			return new APIresponse(HttpStatus.OK.value(),

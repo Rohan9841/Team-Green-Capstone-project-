@@ -460,92 +460,92 @@ public class GroupController extends ExceptionResolver {
 				group);
 	}
 
-	@PostMapping(path = "/sendEmail")
-	@PreAuthorize("hasRole('PM') or hasRole('ADMIN') or hasRole('MODERATOR')")
-	public APIresponse sendEmail(@Valid @RequestBody GroupEmail groupEmail) {
-
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		String username = "";
-
-		if (principal instanceof UserDetails) {
-			username = ((UserDetails) principal).getUsername();
-		}
-
-		User user = userService.findByUsername(username);
-
-		Long groupId = groupEmail.getId();
-
-		Group group = groupService.findById(groupId);
-
-		if (group == null) {
-			return new APIresponse(HttpStatus.OK.value(), "Group with id " + groupId + " does not exists.", null);
-		}
-
-		if (group.getType().equals("Custom") && group.getCreatedBy() != user) {
-			return new APIresponse(HttpStatus.BAD_REQUEST.value(), "You did not create the group. Authorization denied!",
-					null);
-		}
-
-		List<User> memberList = group.getMembers();
-
-		List<String> emailList = new ArrayList<String>();
-
-		for (User member : memberList) {
-			emailList.add(member.getEmail());
-		}
-
-		String[] emails = emailList.toArray(new String[emailList.size()]);
-
-		SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-		mailMessage.setTo(emails);
-		mailMessage.setSubject(groupEmail.getTitle());
-		mailMessage.setFrom(user.getEmail());
-		mailMessage.setText(groupEmail.getMessage());
-
-		emailSenderService.sendEmail(mailMessage);
-
-		return new APIresponse(HttpStatus.OK.value(), "Emails have been successfully sent", emailList);
-	}
-
-	@PostMapping(path = "/sendEmailToFew")
-	@PreAuthorize("hasRole('PM') or hasRole('ADMIN') or hasRole('MODERATOR')")
-	public APIresponse sendEmailToFew(@Valid @RequestBody IndividualEmail individualEmail) {
-
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		String username = "";
-
-		if (principal instanceof UserDetails) {
-			username = ((UserDetails) principal).getUsername();
-		}
-
-		User user = userService.findByUsername(username);
-
-		List<String> emailsFromIndividualEmail = individualEmail.getRecipients();
-
-		List<String> realEmails = new ArrayList<String>();
-
-		for (String email : emailsFromIndividualEmail) {
-			if (userService.findByEmail(email) != null) {
-				realEmails.add(email);
-			}
-		}
-
-		String[] emails = realEmails.toArray(new String[realEmails.size()]);
-
-		SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-		mailMessage.setTo(emails);
-		mailMessage.setSubject(individualEmail.getTitle());
-		mailMessage.setFrom(user.getEmail());
-		mailMessage.setText(individualEmail.getMessage());
-
-		emailSenderService.sendEmail(mailMessage);
-
-		return new APIresponse(HttpStatus.OK.value(), "Emails have been successfully sent", realEmails);
-	}
+//	@PostMapping(path = "/sendEmail")
+//	@PreAuthorize("hasRole('PM') or hasRole('ADMIN') or hasRole('MODERATOR')")
+//	public APIresponse sendEmail(@Valid @RequestBody GroupEmail groupEmail) {
+//
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//		String username = "";
+//
+//		if (principal instanceof UserDetails) {
+//			username = ((UserDetails) principal).getUsername();
+//		}
+//
+//		User user = userService.findByUsername(username);
+//
+//		Long groupId = groupEmail.getId();
+//
+//		Group group = groupService.findById(groupId);
+//
+//		if (group == null) {
+//			return new APIresponse(HttpStatus.OK.value(), "Group with id " + groupId + " does not exists.", null);
+//		}
+//
+//		if (group.getType().equals("Custom") && group.getCreatedBy() != user) {
+//			return new APIresponse(HttpStatus.BAD_REQUEST.value(), "You did not create the group. Authorization denied!",
+//					null);
+//		}
+//
+//		List<User> memberList = group.getMembers();
+//
+//		List<String> emailList = new ArrayList<String>();
+//
+//		for (User member : memberList) {
+//			emailList.add(member.getEmail());
+//		}
+//
+//		String[] emails = emailList.toArray(new String[emailList.size()]);
+//
+//		SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//		mailMessage.setTo(emails);
+//		mailMessage.setSubject(groupEmail.getTitle());
+//		mailMessage.setFrom(user.getEmail());
+//		mailMessage.setText(groupEmail.getMessage());
+//
+//		emailSenderService.sendEmail(mailMessage);
+//
+//		return new APIresponse(HttpStatus.OK.value(), "Emails have been successfully sent", emailList);
+//	}
+//
+//	@PostMapping(path = "/sendEmailToFew")
+//	@PreAuthorize("hasRole('PM') or hasRole('ADMIN') or hasRole('MODERATOR')")
+//	public APIresponse sendEmailToFew(@Valid @RequestBody IndividualEmail individualEmail) {
+//
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//		String username = "";
+//
+//		if (principal instanceof UserDetails) {
+//			username = ((UserDetails) principal).getUsername();
+//		}
+//
+//		User user = userService.findByUsername(username);
+//
+//		List<String> emailsFromIndividualEmail = individualEmail.getRecipients();
+//
+//		List<String> realEmails = new ArrayList<String>();
+//
+//		for (String email : emailsFromIndividualEmail) {
+//			if (userService.findByEmail(email) != null) {
+//				realEmails.add(email);
+//			}
+//		}
+//
+//		String[] emails = realEmails.toArray(new String[realEmails.size()]);
+//
+//		SimpleMailMessage mailMessage = new SimpleMailMessage();
+//
+//		mailMessage.setTo(emails);
+//		mailMessage.setSubject(individualEmail.getTitle());
+//		mailMessage.setFrom(user.getEmail());
+//		mailMessage.setText(individualEmail.getMessage());
+//
+//		emailSenderService.sendEmail(mailMessage);
+//
+//		return new APIresponse(HttpStatus.OK.value(), "Emails have been successfully sent", realEmails);
+//	}
 
 	@GetMapping(path = "/getAllMajors")
 	@PreAuthorize("hasRole('PM') or hasRole('ADMIN') or hasRole('MODERATOR')")
